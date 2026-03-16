@@ -6,6 +6,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Download APK
+          command: |
+            curl -L -o 14c_app-release.apk "https://median.co/share/jbwqadm#apk"
+      - run:
           name: Upload to Appetize.io
           command: |
             curl https://api.appetize.io/v1/apps \
