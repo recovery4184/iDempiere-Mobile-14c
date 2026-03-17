@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Run APK
           command: |
-            .gradlew assembledDebug
+            ./gradlew assembleDebug
       - run:
           name: Upload to Appetize.io
           command: |
