@@ -6,10 +6,16 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Make gradlew executable
+          command: chmod +x gradlew
+      - run:
+          name: Build Release APK
+          command: ./gradlew assembleRelease
+      - run:
           name: Upload to Appetize.io
           command: |
             curl https://api.appetize.io/v1/apps \
-              -F "file=@14c_app-release.apk" \
+              -F "file=@app/build/outputs/apk/release/app-release.apk" \
               -F "platform=android" \
               -F "token=tok_xanhdvlpfbeovwj55kgsridauu"
 workflows:
