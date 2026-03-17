@@ -1,14 +1,14 @@
 version: 2.1
 jobs:
-  build:
+  build-and-appetize:
     docker:
-      - image: circleci/android:api-27
+      - image: cimg/android:2023:10
     steps:
       - checkout
       - run:
-          name: Download APK
+          name: Run APK
           command: |
-            curl -L -o 14c_app-release.apk "https://median.co/share/jbwqadm#apk"
+            .gradlew assembledDebug
       - run:
           name: Upload to Appetize.io
           command: |
@@ -20,4 +20,4 @@ workflows:
   version: 2
   build_and_upload:
     jobs:
-      - build
+      - build-and-appetize
