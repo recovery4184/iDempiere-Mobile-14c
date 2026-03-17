@@ -5,6 +5,10 @@ jobs:
       - image: cimg/android:2023.10
     steps:
       - checkout
+            - run:
+          name: chmod +x
+          command: |
+            chmod +x ./gradlew
       - run:
           name: Run APK
           command: |
