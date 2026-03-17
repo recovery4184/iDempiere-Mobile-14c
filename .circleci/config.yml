@@ -8,6 +8,7 @@ jobs:
       - run:
           name: Run APK
           command: |
+          chmod +x ./gradlew
             ./gradlew assembleDebug
       - run:
           name: Upload to Appetize.io
