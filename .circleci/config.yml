@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  build-and-appetize:
+    docker:
+      - image: cimg/android:2023.10
+    steps:
+      - checkout
+      - run:
+          name: Upload to Appetize.io
+          command: |
+            curl https://api.appetize.io/v1/apps \
+              -F "file=@14c_app-release.apk" \
+              -F "platform=android" \
+              -F "token=tok_xanhdvlpfbeovwj55kgsridauu"
+workflows:
+  version: 2
+  build_and_upload:
+    jobs:
+      - build-and-appetize
